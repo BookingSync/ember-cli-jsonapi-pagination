@@ -1,7 +1,7 @@
-<ul>
+<ul class="rentals-list">
   {{#each model as |rental|}}
     <li>{{rental.name}}</li>
   {{/each}}
 </ul>
 
-{{paginate-collection totalPages=totalPages currentPage=number displayGoToPage=true setCurrentPage=(action "setCurrentPage")}}
+{{paginate-collection totalPages=totalPages currentPage=number setCurrentPage=(action "setCurrentPage")}}
