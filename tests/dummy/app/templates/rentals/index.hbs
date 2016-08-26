@@ -1,0 +1,7 @@
+<ul>
+  {{#each model as |rental|}}
+    <li>{{rental.name}}</li>
+  {{/each}}
+</ul>
+
+{{paginate-collection totalPages=totalPages currentPage=number displayGoToPage=true setCurrentPage=(action "setCurrentPage")}}

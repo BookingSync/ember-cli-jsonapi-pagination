@@ -1,0 +1,45 @@
+{{#if shouldDisplayPaginator}}
+  <div class="pagination-wrapper">
+    <ul class="pagination">
+      {{#if hasPreviousPage}}
+        <li class="arrow prev enabled-arrow">
+          <a href="#" {{action "previousPage"}}>&laquo;</a>
+        </li>
+      {{else}}
+        <li class="arrow prev disabled">
+          <a href="#">&laquo;</a>
+        </li>
+      {{/if}}
+
+      {{#each pageObjects as |page|}}
+        {{#if page.shouldDisplay}}
+          {{#if page.displayAsDots}}
+            <li class="page-number">
+              <a href="#" class="disabled" disabled="disabled">...</a>
+            </li>
+          {{else}}
+            {{#if page.isCurrentPage}}
+              <li class="active page-number">
+                <a href="#" class="disabled">{{page.value}}</a>
+              </li>
+            {{else}}
+              <li class="page-number">
+                <a href="#" {{action "setCurrentPage" page.value}}>{{page.value}}</a>
+              </li>
+            {{/if}}
+          {{/if}}
+        {{/if}}
+      {{/each}}
+
+      {{#if hasNextPage}}
+        <li class="arrow next enabled-arrow">
+          <a href="#" {{action "nextPage"}}>&raquo;</a>
+        </li>
+      {{else}}
+        <li class="arrow next disabled">
+          <a href="#">&raquo;</a>
+        </li>
+      {{/if}}
+    </ul>
+  </div>
+{{/if}}
