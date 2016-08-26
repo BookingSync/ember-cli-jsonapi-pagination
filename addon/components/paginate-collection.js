@@ -48,10 +48,10 @@ export default Ember.Component.extend({
         if (isCurrentPage) {
           shouldDisplay = true;
           displayAsDots = false;
-        } else if ((i <= outerWindow + 1) || (totalPages - i) <= outerWindow) {
+        } else if (isWithinOuterWindowLimit(outerWindow, totalPages, i)) {
           shouldDisplay = true;
           displayAsDots = false;
-        } else if ((i === currentPage - 1) || (i === currentPage  + 1)) {
+        } else if (isAdjacentToCurrentPage(currentPage, i)) {
           shouldDisplay = true;
           displayAsDots = false;
         } else if (i < currentPage && !leftDotsDisplayed) {
@@ -118,4 +118,19 @@ function shouldConsiderOuterWindowSettings(totalPages, outerWindow) {
   return totalPages > outerWindow * 2 + firstPageContribution + lastPageContribution + extraCurrentPageContribution;
 }
 
+function isAdjacentToCurrentPage(currentPage, i) {
+  return (i === currentPage - 1) || (i === currentPage  + 1);
+}
 
+function isWithinOuterWindowLimit(outerWindow, totalPages, i) {
+  return isWithinOuterWindowLimitFromLeft(outerWindow, i) ||
+         isWithinOuterWindowLimitFromRight(outerWindow, totalPages, i);
+}
+
+function isWithinOuterWindowLimitFromLeft(outerWindow, i) {
+  return i <= (outerWindow + 1);
+}
+
+function isWithinOuterWindowLimitFromRight(outerWindow, totalPages, i) {
+  return (totalPages - i) <= outerWindow;
+}
