@@ -117,6 +117,49 @@ test('it does not display paginator if totalPages is not more than 1', function(
   assert.equal(this.$().text().trim(), '');
 });
 
+test('clicking on link with given page sets current page to the specified value and calls setCurrentPage external action', function(assert) {
+  this.set('setCurrentPage', (passedNumber) => {
+    assert.equal(passedNumber, 4);
+  });
+
+  this.render(hbs`
+    {{paginate-collection totalPages=15 currentPage=1 setCurrentPage=(action setCurrentPage)}}
+  `);
+
+  $(this.$().find('li')[4]).find('a').click();
+
+  assert.equal(this.$().find('li.active').text().trim(), '4');
+});
+
+test('clicking on arrow for next page sets currentPage to next page and calls setCurrentPage external action', function(assert) {
+  this.set('setCurrentPage', (passedNumber) => {
+    assert.equal(passedNumber, 2);
+  });
+
+  this.render(hbs`
+    {{paginate-collection totalPages=15 currentPage=1 setCurrentPage=(action setCurrentPage)}}
+  `);
+
+  this.$().find('li.next').find('a').click();
+
+  assert.equal(this.$().find('li.active').text().trim(), '2');
+});
+
+
+test('clicking on arrow for previous page sets currentPage to previous page and calls setCurrentPage external action', function(assert) {
+  this.set('setCurrentPage', (passedNumber) => {
+    assert.equal(passedNumber, 1);
+  });
+
+  this.render(hbs`
+    {{paginate-collection totalPages=15 currentPage=2 setCurrentPage=(action setCurrentPage)}}
+  `);
+
+  this.$().find('li.prev').find('a').click();
+
+  assert.equal(this.$().find('li.active').text().trim(), '1');
+});
+
 function extractPaginationLinksContent(context) {
   return Array.prototype.slice.call(context.$().find('a').map(function(i, el) {
     return $(el).html();
