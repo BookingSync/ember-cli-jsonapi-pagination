@@ -7,7 +7,7 @@
         </li>
       {{else}}
         <li class="arrow prev disabled">
-          <a href="#">&laquo;</a>
+          <a >&laquo;</a>
         </li>
       {{/if}}
 
@@ -15,12 +15,12 @@
         {{#if page.shouldDisplay}}
           {{#if page.displayAsDots}}
             <li class="page-number">
-              <a href="#" class="disabled" disabled="disabled">...</a>
+              <a class="disabled" disabled="disabled">...</a>
             </li>
           {{else}}
             {{#if page.isCurrentPage}}
               <li class="active page-number">
-                <a href="#" class="disabled">{{page.value}}</a>
+                <a class="disabled">{{page.value}}</a>
               </li>
             {{else}}
               <li class="page-number">
@@ -37,7 +37,7 @@
         </li>
       {{else}}
         <li class="arrow next disabled">
-          <a href="#">&raquo;</a>
+          <a>&raquo;</a>
         </li>
       {{/if}}
     </ul>
