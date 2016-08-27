@@ -1,4 +1,4 @@
-# ember-cli-jsonapi-pagination
+# ember-cli-jsonapi-pagination [![Build Status](https://travis-ci.org/BookingSync/ember-cli-jsonapi-pagination.svg?branch=master)](https://travis-ci.org/BookingSync/ember-cli-jsonapi-pagination)
 
 This addon adds support for pagination with JSONAPI backend.
 
