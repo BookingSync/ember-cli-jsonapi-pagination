@@ -32,7 +32,7 @@ import Pagination from 'ember-cli-jsonapi-pagination/mixins/controllers/jsonapi-
 export default Ember.Controller.extend(Pagination);
 ```
 
-That way the query params (`size` - by default equal to 15 and `number` - by default equal to 1) and required actions (`setCurrentPage` for setting current page in query params and `setCurrentSize` for setting size in query params) are available in the controller / route. To to perform query with pagination params use `queryPaginated` function:
+That way the query params (`size` - by default equal to 15 and `number` - by default equal to 1) and required actions (`setCurrentPage` for setting current page in query params and `setCurrentSize` for setting size in query params) are available in the controller / route. To to perform query with pagination params use `queryPaginated` function which takes model name and params as arguments:
 
 ``` js
 // app/routes/models/index.js
@@ -65,7 +65,7 @@ export default Ember.Controller.extend(Pagination, {
 To render the paginator in your templates, use `paginate-collection` component:
 
 ``` hbs
-app/templates/some-template.hbs
+// app/templates/some-template.hbs
 
 {{paginate-collection totalPages=totalPages currentPage=number setCurrentPage=(action "setCurrentPage")}}
 ```
