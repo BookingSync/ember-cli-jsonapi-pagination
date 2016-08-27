@@ -1,12 +1,14 @@
 # ember-cli-jsonapi-pagination [![Build Status](https://travis-ci.org/BookingSync/ember-cli-jsonapi-pagination.svg?branch=master)](https://travis-ci.org/BookingSync/ember-cli-jsonapi-pagination)
 
-This addon adds support for pagination with JSONAPI backend.
+An addon adding support for pagination with JSONAPI backend.
+
+![Paginator](http://img.karolgalanciak.com/ember-cli-jsonapi-pagination-paginator-example_1D7192EC.png)
 
 Currently only a paged-based strategy is supported, more details about JSONAPI pagination: [http://jsonapi.org/format/#fetching-pagination](http://jsonapi.org/format/#fetching-pagination).
 
 ## Usage
 
-To install the addon run:
+To install the addon, run:
 
 ```
 ember install ember-cli-jsonapi-pagination
