@@ -107,13 +107,14 @@ export default Ember.Component.extend({
   }
 });
 
+// TODO: use Set here when time is right, apparently it's not widely supported yet
 function extractPageValues(outerWindow, currentPage, pageStartAtValue, pageEndAtValue) {
-  let pageValues = new Set([]);
-  pageValues.add(pageStartAtValue);
-  pageValues.add(pageEndAtValue);
+  let pageValues = [];
+  pageValues.push(pageStartAtValue);
+  pageValues.push(pageEndAtValue);
 
   let addPageValue = function(page) {
-    pageValues.add(page);
+    pageValues.push(page);
   };
 
   if (outerWindow > 0) {
@@ -133,9 +134,14 @@ function extractPageValues(outerWindow, currentPage, pageStartAtValue, pageEndAt
   let innerWindowEndAtValue = currentPage + 2;
   createRange(innerWindowStartAtValue, innerWindowEndAtValue).forEach(addPageValue);
 
+  let takeUnique = function(page, idx, array) {
+    return array.indexOf(page) === idx;
+  };
+
   return [...pageValues]
            .sort((a, b) => a - b)
-           .filter((page) => page >= pageStartAtValue && page <= pageEndAtValue);
+           .filter((page) => page >= pageStartAtValue && page <= pageEndAtValue)
+           .filter(takeUnique);
 
 }
 
