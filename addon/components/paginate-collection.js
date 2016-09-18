@@ -138,10 +138,10 @@ function extractPageValues(outerWindow, currentPage, pageStartAtValue, pageEndAt
     return array.indexOf(page) === idx;
   };
 
-  return [...pageValues]
-           .sort((a, b) => a - b)
-           .filter((page) => page >= pageStartAtValue && page <= pageEndAtValue)
-           .filter(takeUnique);
+  return pageValues
+          .sort((a, b) => a - b)
+          .filter((page) => page >= pageStartAtValue && page <= pageEndAtValue)
+          .filter(takeUnique);
 
 }
 
