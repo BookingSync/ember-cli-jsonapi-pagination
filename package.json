@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-jsonapi-pagination",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Dedicated solution for pagination with JSONAPI compliant API",
   "directories": {
     "doc": "doc",
