@@ -1,6 +1,6 @@
 # ember-cli-jsonapi-pagination Changelog
 
-## master
+## 0.0.2
 
 Update notes:
   - None
