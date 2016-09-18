@@ -23,13 +23,6 @@ test('it renders pagination links considering the outer window which is 3 by def
   assert.deepEqual(paginationLinksContent, ["«", "1", "2", "3", "4", "...", "12", "13", "14", "15", "»"]);
 
   this.render(hbs`
-    {{paginate-collection totalPages=15 currentPage=7}}
-  `);
-
-  paginationLinksContent = extractPaginationLinksContent(this);
-  assert.deepEqual(paginationLinksContent, ["«", "1", "2", "3", "4", "...", "6", "7", "8", "...",  "12", "13", "14", "15", "»"]);
-
-  this.render(hbs`
     {{paginate-collection totalPages=15 currentPage=4}}
   `);
 
@@ -44,6 +37,13 @@ test('it renders pagination links considering the outer window which is 3 by def
   assert.deepEqual(paginationLinksContent, ["«", "1", "2", "3", "4", "5", "6", "...",  "12", "13", "14", "15", "»"]);
 
   this.render(hbs`
+    {{paginate-collection totalPages=15 currentPage=7}}
+  `);
+
+  paginationLinksContent = extractPaginationLinksContent(this);
+  assert.deepEqual(paginationLinksContent, ["«", "1", "2", "3", "4", "...", "6", "7", "8", "...",  "12", "13", "14", "15", "»"]);
+
+  this.render(hbs`
     {{paginate-collection totalPages=15 currentPage=11}}
   `);
 
@@ -56,6 +56,13 @@ test('it renders pagination links considering the outer window which is 3 by def
 
   paginationLinksContent = extractPaginationLinksContent(this);
   assert.deepEqual(paginationLinksContent, ["«", "1", "2", "3", "4", "...", "11", "12", "13", "14", "15", "»"]);
+
+  this.render(hbs`
+    {{paginate-collection totalPages=15 currentPage=15}}
+  `);
+
+  paginationLinksContent = extractPaginationLinksContent(this);
+  assert.deepEqual(paginationLinksContent, ["«", "1", "2", "3", "4", "...", "12", "13", "14", "15", "»"]);
 
   this.render(hbs`
     {{paginate-collection totalPages=15 currentPage=7 outerWindow=2}}
